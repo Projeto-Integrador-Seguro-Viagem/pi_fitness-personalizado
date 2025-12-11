@@ -8,7 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'root',
+      password: '83626122.Ends',
       database: 'db_fitness_personalizado',
       entities: [],
       synchronize: true,
