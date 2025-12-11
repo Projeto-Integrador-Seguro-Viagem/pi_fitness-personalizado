@@ -12,7 +12,7 @@ import { UsuarioModule } from './usuario/usuario.module';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'root',
+      password: '83626122.Ends',
       database: 'db_fitness_personalizado',
       entities: [TipoTreino, Usuario], // ← combinar aqui
       synchronize: true,
