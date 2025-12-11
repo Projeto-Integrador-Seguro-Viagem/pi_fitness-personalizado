@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TipoTreinoModule } from './tipotreino/tipotreino.module';
 import { TipoTreino } from './tipotreino/entities/tipotreino.entity';
+import { Usuario } from './usuario/entities/usuario.entity';
+import { UsuarioModule } from './usuario/usuario.module';
 
 @Module({
   imports: [
@@ -12,11 +14,12 @@ import { TipoTreino } from './tipotreino/entities/tipotreino.entity';
       username: 'root',
       password: 'root',
       database: 'db_fitness_personalizado',
-      entities: [TipoTreino],
+      entities: [TipoTreino, Usuario], // ← combinar aqui
       synchronize: true,
       logging: true,
     }),
-    TipoTreinoModule
+    TipoTreinoModule,
+    UsuarioModule, // ← manter os dois módulos
   ],
 
   controllers: [],
