@@ -9,7 +9,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       port: 3306,
       username: 'root',
       password: 'root',
-      database: 'db_fitness_persnalizado',
+      database: 'db_fitness_personalizado',
       entities: [],
       synchronize: true,
       logging: true,
