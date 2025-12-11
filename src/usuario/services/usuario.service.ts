@@ -5,6 +5,9 @@ import { Usuario } from '../entities/usuario.entity';
 
 @Injectable()
 export class UsuarioService {
+    delete(id: number) {
+        throw new Error("Method not implemented.");
+    }
     constructor(
         @InjectRepository(Usuario)
         private usuarioRepository: Repository<Usuario>,

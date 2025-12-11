@@ -1,6 +1,6 @@
 import { IsNotEmpty } from "class-validator";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm"
-// import { Exercicio } from "../../exercicio/entities/exercicio.entity";
+import { Exercicio } from "../../exercicio/entities/exercicio.entity";
 
 @Entity ({ name: "tb_tipotreino"}) // Indicando que a classe é uma entidade/model
 export class TipoTreino {
@@ -20,6 +20,6 @@ export class TipoTreino {
     @Column({ length: 50, nullable: false}) // Regra do MySQL - NOT NULL
     nivel: string;
 
-    // @OneToMany(() => Exercicio, (exercicio) => exercicio.tipoTreino)
-    // exercicios: Exercicio[];
+    @OneToMany(() => Exercicio, (exercicio) => exercicio.tipoTreino)
+    exercicios: Exercicio[];
 }

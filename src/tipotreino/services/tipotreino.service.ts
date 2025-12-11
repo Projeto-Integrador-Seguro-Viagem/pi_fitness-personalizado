@@ -14,7 +14,7 @@ export class TipoTreinoService {
     async findAll(): Promise<TipoTreino[]> {
         return await this.tipoTreinoRepository.find({
             relations:{ // Indica que queremos trazer também o relacionamento
-                // exercicios: true
+                exercicios: true
             }
         });
     }
@@ -24,7 +24,7 @@ export class TipoTreinoService {
         const tipoTreino = await this.tipoTreinoRepository.findOne({
             where: {id},
             relations:{
-                // exercicios: true
+                exercicios: true
             }
         });
 
@@ -38,7 +38,7 @@ export class TipoTreinoService {
         return await this.tipoTreinoRepository.find({
             where:{nivel},
             relations:{
-                // exercicios: true
+               exercicios: true
             }
         })
     }
@@ -47,7 +47,7 @@ export class TipoTreinoService {
         return await this.tipoTreinoRepository.find({
             where:{ descricao: ILike(`%${descricao}%`)},
             relations:{
-                // exercicios: true
+                exercicios: true
             }
         })
     }
