@@ -49,9 +49,10 @@ export class UsuarioController {
 
   @Get('/:id/imc')
   @HttpCode(HttpStatus.OK)
-  async getImc(@Param('id', ParseIntPipe) id: number): Promise<{ imc: number }> {
+  async getImc(
+    @Param('id', ParseIntPipe) id: number,
+  ): Promise<{ imc: number }> {
     const usuario = await this.usuarioService.findById(id);
     return { imc: usuario.imc };
   }
 }
-
