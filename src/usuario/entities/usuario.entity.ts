@@ -1,6 +1,6 @@
 import { IsEmail, IsNotEmpty, MinLength } from 'class-validator';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Exercicio } from "../../exercicio/entities/exercicio.entity";
+import { Exercicio } from '../../exercicio/entities/exercicio.entity';
 
 @Entity({ name: 'tb_usuarios' })
 export class Usuario {
@@ -24,6 +24,11 @@ export class Usuario {
   @Column({ length: 5000 })
   foto: string;
   static exercicios: { onDelete: 'CASCADE' };
+  altura: any;
+  peso: number;
+
+  @Column({ type: 'float', nullable: true })
+  imc: number;
 
   @OneToMany(() => Exercicio, (exercicio) => exercicio.usuario)
   exercicios: Exercicio[];

@@ -9,7 +9,6 @@ import {
   ParseIntPipe,
   Post,
   Put,
-  UseGuards,
 } from '@nestjs/common';
 import { UsuarioService } from '../services/usuario.service';
 import { Usuario } from '../entities/usuario.entity';
@@ -42,9 +41,17 @@ export class UsuarioController {
     return this.usuarioService.update(usuario);
   }
 
-  @Delete(':id')
+  @Delete('/:id')
   @HttpCode(HttpStatus.NO_CONTENT)
   async delete(@Param('id', ParseIntPipe) id: number) {
     return await this.usuarioService.delete(id);
   }
+
+  @Get('/:id/imc')
+  @HttpCode(HttpStatus.OK)
+  async getImc(@Param('id', ParseIntPipe) id: number): Promise<{ imc: number }> {
+    const usuario = await this.usuarioService.findById(id);
+    return { imc: usuario.imc };
+  }
 }
+
