@@ -60,14 +60,18 @@ export class ExercicioService {
     return await this.exercicioRepository.save(exercicios);
   }
 
-  async update(exercicios: Exercicio): Promise<Exercicio> {
-    let exercicioUpdate: Exercicio = await this.findById(exercicios.id); 
+async update(exercicios: Exercicio): Promise<Exercicio> {
+  const exercicioUpdate = await this.findById(exercicios.id);
 
-    if (!exercicioUpdate)
-      throw new HttpException('Exercício não encontrado!', HttpStatus.NOT_FOUND);
-
-    return await this.exercicioRepository.save(exercicios);
+  if (!exercicioUpdate) {
+    throw new HttpException('Exercício não encontrado!', HttpStatus.NOT_FOUND);
   }
+
+  const exercicioMerged = this.exercicioRepository.merge(exercicioUpdate, exercicios);
+
+  return await this.exercicioRepository.save(exercicioMerged);
+}
+
 
   async delete(id: number): Promise<DeleteResult> {
     let buscaTreino = await this.findById(id);

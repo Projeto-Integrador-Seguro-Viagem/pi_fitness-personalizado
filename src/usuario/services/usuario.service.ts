@@ -11,9 +11,7 @@ export class UsuarioService {
   ) {}
 
   async findByUsuario(usuario: string): Promise<Usuario | null> {
-    return await this.usuarioRepository.findOne({
-      where: { usuario: usuario },
-    });
+    return await this.usuarioRepository.findOne({ where: { usuario } });
   }
 
   async findAll(): Promise<Usuario[]> {
@@ -40,9 +38,7 @@ export class UsuarioService {
       );
     }
 
-    usuario.imc = +(usuario.peso / (usuario.altura * usuario.altura)).toFixed(
-      2,
-    );
+    usuario.imc = +(usuario.peso / (usuario.altura * usuario.altura)).toFixed(2);
 
     if (!usuarioBusca) {
       return await this.usuarioRepository.save(usuario);
@@ -65,9 +61,7 @@ export class UsuarioService {
       );
     }
 
-    usuario.imc = +(usuario.peso / (usuario.altura * usuario.altura)).toFixed(
-      2,
-    );
+    usuario.imc = +(usuario.peso / (usuario.altura * usuario.altura)).toFixed(2);
 
     if (!usuarioUpdate) {
       throw new HttpException('Usuário não encontrado!', HttpStatus.NOT_FOUND);
@@ -88,3 +82,4 @@ export class UsuarioService {
     await this.usuarioRepository.delete(id);
   }
 }
+
